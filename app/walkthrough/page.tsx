@@ -15,10 +15,11 @@ import Button from "../../components/button/Button";
 import Title from "../../components/title/Title";
 import LottieAnimation from "../../components/lottie/LottieAnimation";
 import BackButton from "../../components/backButton/BackButton";
+import { Swiper as SwiperType } from 'swiper';
 
 const Walkthrough = () => {
   const router = useRouter();
-  const swiperRef = useRef<Swiper | null>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const navigateToForm = () => {
     router.push("/form");
