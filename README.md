@@ -21,8 +21,10 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 ## Project Structure
 
 ```
-
-
+- app (homepage and all other pages)
+- components (reusable components)
+- public (fonts, lottie & images)
+- styles (all styles for the app pages)
 ```
 
 ## Learn More
