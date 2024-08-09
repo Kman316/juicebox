@@ -1,0 +1,24 @@
+@import "./variables";
+// Global styles
+body {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle, $gradient-end, $secondary-color);
+  color: $primary-color;
+}
+
+.swiper-pagination-bullet {
+  background: $text-color !important; // Customize the color of the dots
+}
+
+.swiper-pagination-bullet-active {
+  background: $tertiary-color !important; // Color of the active dot
+}
+
+// Media queries
+@media (min-width: 768px) {
+  body {
+    font-size: 18px;
+  }
+}

@@ -1,0 +1,176 @@
+@import "./variables";
+
+@font-face {
+  font-family: "Bagoss";
+  src: url("../public/figmafonts/Bagoss/BagossTRIALVF.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.lottie {
+  width: 100px;
+  height: 100px;
+  z-index: 1;
+}
+
+.container {
+  color: $primary-color;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  position: relative; // Ensure positioning context for absolute positioning
+
+  @media (min-width: 768px) {
+    padding: 40px; // Increase padding for larger screens
+  }
+
+  @media (min-width: 1024px) {
+    padding: 60px; // Further increase padding for very large screens
+  }
+}
+
+.backButton {
+  position: absolute;
+  top: 20px; // Adjust this value as needed
+  left: 20px; // Adjust this value to align with the juicebox text
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; // Ensure it's above other content
+
+  @media (min-width: 768px) {
+    top: 40px; // Adjust top position for larger screens if needed
+    left: 40px; // Adjust left position for larger screens if needed
+  }
+
+  @media (min-width: 1024px) {
+    top: 60px; // Further adjust top position for very large screens if needed
+    left: 60px; // Further adjust left position for very large screens if needed
+  }
+}
+
+.lottieContainer {
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 40px; // Increase margin-bottom for larger screens
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 60px; // Further increase margin-bottom for very large screens
+  }
+}
+
+.header {
+  position: absolute;
+  top: 20px;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    top: 40px; // Adjust top position for larger screens if needed
+  }
+
+  @media (min-width: 1024px) {
+    top: 60px; // Further adjust top position for very large screens if needed
+  }
+}
+
+.logo {
+  width: 100px;
+
+  @media (min-width: 768px) {
+    width: 150px; // Increase logo size for larger screens
+  }
+
+  @media (min-width: 1024px) {
+    width: 200px; // Further increase logo size for very large screens
+  }
+}
+
+.formStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: 80%; // Adjust width for larger screens if needed
+  }
+
+  @media (min-width: 1024px) {
+    width: 60%; // Further adjust width for very large screens if needed
+  }
+}
+
+.text {
+  font-family: Bagoss;
+  font-weight: 400;
+  line-height: 27.5px;
+  letter-spacing: 0.01em;
+  color: $primary-color;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem; // Increase font size for larger screens
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.8rem; // Further increase font size for very large screens
+  }
+}
+
+.input {
+  font-size: 1.2rem;
+  width: 350px;
+  height: 60px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: $primary-color;
+  border: solid 2px $primary-color;
+  border-radius: 4px;
+
+  @media (min-width: 768px) {
+    width: 400px; // Increase input width for larger screens
+  }
+
+  @media (min-width: 1024px) {
+    width: 450px; // Further increase input width for very large screens
+  }
+}
+
+.nextButton {
+  background-color: $tertiary-color;
+  color: $secondary-color;
+
+  &:hover {
+    background-color: lighten($tertiary-color, 10%);
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.2rem; // Increase font size for larger screens
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.4rem; // Further increase font size for very large screens
+  }
+}
+
+.error {
+  position: absolute;
+  padding-top: 10px;
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

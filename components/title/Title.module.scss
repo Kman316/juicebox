@@ -1,0 +1,15 @@
+@font-face {
+  font-family: "PPAgrandir";
+  src: url("../../public/figmafonts/PP\ Agrandir/PPAgrandir-Medium.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.title {
+  font-family: PPAgrandir;
+  font-weight: 400;
+  font-size: 40px;
+  position: relative;
+  bottom: 70px;
+}

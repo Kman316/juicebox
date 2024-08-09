@@ -1,0 +1,73 @@
+@import "./variables";
+
+@font-face {
+  font-family: "Bagoss";
+  src: url("../public/figmafonts/Bagoss/BagossTRIALVF.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+.container {
+  background-color: $secondary-color;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  top: 100px;
+  left: 125px;
+  position: absolute !important;
+  bottom: 0;
+}
+
+.lottie {
+  width: 300px; // Added px for width
+  height: 300px; // Added px for height
+  z-index: 1;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.text {
+  font-family: Bagoss;
+  font-weight: 400;
+  line-height: 27.5px;
+  letter-spacing: 0.01em;
+  color: $text-color;
+  text-align: center;
+  margin: 20px;
+  max-width: 90%; // Ensures text does not exceed container width
+  word-wrap: break-word; // Allows long words to break correctly
+  overflow-wrap: break-word; // Adds support for breaking long words
+  white-space: normal; // Allows text to wrap normally
+  display: inline-block;
+}
+
+.letter {
+  display: inline; // Keeps letters inline
+}
+
+.continueButton,
+.getStartedButton {
+  background-color: transparent; // Transparent background
+  color: $primary-color; // Text color
+  border: solid 2px $primary-color;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: $primary-color;
+    color: $secondary-color;
+  }
+}
