@@ -100,6 +100,7 @@
   color: $started-color;
   text-align: center;
   font-size: 19px;
+  padding: 24px 20px 24px 20px;
 
   @media (min-width: 768px) {
     font-size: 1.5rem;
@@ -119,6 +120,7 @@
   color: $border-color;
   border: solid 2px $border-color;
   border-radius: 16px;
+  padding: 24px 20px 24px 20px;
 
   @media (min-width: 768px) {
     width: 400px;

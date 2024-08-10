@@ -19,7 +19,6 @@ const ResultPage = () => {
     
     // Ensure searchParams is not null
     const name = searchParams?.get('name') || 'Guest';
-    const email = searchParams?.get('email') || 'Not provided';
 
     return (
         <div className={styles.container}>
@@ -34,7 +33,7 @@ const ResultPage = () => {
             <div className={styles.lottieContainer}>
                 <LottieAnimation className={styles.lottie} />
             </div>
-            <h2 className={styles.text}>Thanks, {name}! Now it's time to get a reality check. \n This will take 2-3 minutes</h2>
+            <div className={styles.text}>Thanks, {name}! Now it's time to get a reality check. &#13;This will take 2-3 minutes</div>
         </div>
     );
 };

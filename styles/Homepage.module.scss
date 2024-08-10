@@ -2,59 +2,53 @@
 
 .container {
   display: flex;
-  flex-direction: column; // Stack elements vertically
-  justify-content: center; // Center elements vertically within the container
-  align-items: center; // Center elements horizontally within the container
-  position: relative;
-  width: 100%;
-  height: 100vh; // Make sure the container spans the entire height of the viewport
-  overflow: hidden; // Ensure nothing overflows the container
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between; /* Space out title, Lottie, and bottom container */
+  overflow: hidden; /* Ensure nothing overflows the container */
 }
 
 .headerContainer {
   display: flex;
-  align-items: center;
   justify-content: center;
-  position: relative;
   width: 100%;
-  padding: 20px 0; // Add padding to space out the header from the content
-
-  .title {
-    flex-grow: 1;
-    text-align: center;
-  }
+  padding: 20px 0;
 }
 
-.description {
-  font-family: Bagoss;
-  font-weight: 400;
-  line-height: 33.6px;
+.title {
+  font-size: 2rem; /* Adjust the size as needed */
   text-align: center;
+}
+
+.lottieContainer {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  flex-grow: 1; /* Allow the Lottie to take up available space */
+  align-items: center;
 }
 
 .lottie {
   width: 274px;
   height: 290px;
   z-index: 1;
-  transition: transform 1s ease; // Ensure smooth transition
+  transition: transform 1s ease; /* Ensure smooth transition */
 }
 
 .shrinking {
-  transform: scale(0.5); // Adjust the scale value as needed
+  transform: scale(0.5); /* Adjust the scale value as needed */
 }
 
 .textContainer {
   position: absolute;
-  top: 0;
-  left: 0;
   z-index: 2;
 }
 
 .textOverlay {
   font-size: 1.2rem;
   margin: 10px 0;
-  position: relative;
   white-space: nowrap;
+  position: relative;
 }
 
 .getStartedButton {
@@ -75,13 +69,8 @@
 }
 
 .bottomContainer {
-  position: absolute;
-  bottom: 20px; 
-  width: 100%;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 24px 20px 24px 20px;
 }
 
 .highlight {
@@ -148,6 +137,14 @@
   text-align: left;
 }
 
+.description {
+  font-family: Bagoss;
+  font-weight: 400;
+  line-height: 33.6px;
+  text-align: center;
+  margin: 0 20px;
+}
+
 @media (min-width: 768px) {
   .lottie {
     height: 1000px;
@@ -161,17 +158,9 @@
     height: 60px;
   }
 
-  .textContainer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-  }
-
   .textOverlay {
     font-size: 1.5rem;
     margin: 10px 0;
-    position: relative;
     white-space: nowrap;
   }
 }

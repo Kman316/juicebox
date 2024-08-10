@@ -40,8 +40,8 @@
 }
 
 .lottie {
-  width: 274px; // Initial width
-  height: 290px; // Initial height
+  width: 146px; 
+  height: 155px; // Initial height
   z-index: 1;
 }
 
@@ -58,7 +58,6 @@
   font-weight: 400;
   line-height: 27.5px;
   font-size: 22px;
-  letter-spacing: 0.01em;
   color: $text-color;
   text-align: center;
   margin: 20px;
@@ -81,15 +80,6 @@
   font-family: Sohne;
   font-weight: 400;
   line-height: 21.6px;
-  transition:
-    background-color 0.3s,
-    color 0.3s,
-    border-color 0.3s;
-
-  &:hover {
-    background-color: $primary-color;
-    color: $secondary-color;
-  }
 }
 
 .getStartedButton {

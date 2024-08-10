@@ -69,10 +69,6 @@ const Form = () => {
     }
   };
 
-  const prevStep = () => {
-    setStep(step - 1);
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -93,9 +89,9 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         {step === 1 && (
           <div className={styles.formStep}>
-            <h3 className={styles.text}>
+            <div className={styles.text}>
               Let’s start with the basics. Type in your first name.
-            </h3>
+            </div>
             <div className={styles.inputContainer}>
               <label htmlFor="firstName" className={styles.srOnly}>
                 First name

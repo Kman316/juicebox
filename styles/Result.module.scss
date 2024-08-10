@@ -1,5 +1,6 @@
 @import "./variables";
 
+
 .text {
   font-family: Bagoss;
   font-weight: 400;
@@ -7,6 +8,7 @@
   color: $started-color;
   text-align: center;
   font-size: 19px;
+  padding: 24px 20px 24px 20px;
 }
 
 .lottie {
