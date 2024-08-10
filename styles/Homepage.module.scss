@@ -11,10 +11,36 @@
   overflow: hidden; // Ensure nothing overflows the container
 }
 
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 20px 0; // Add padding to space out the header from the content
+
+  .title {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+.description {
+  font-family: Bagoss;
+  font-weight: 400;
+  line-height: 33.6px;
+  text-align: center;
+}
+
 .lottie {
-  width: 500px;
-  height: 500px;
+  width: 274px;
+  height: 290px;
   z-index: 1;
+  transition: transform 1s ease; // Ensure smooth transition
+}
+
+.shrinking {
+  transform: scale(0.5); // Adjust the scale value as needed
 }
 
 .textContainer {
@@ -34,6 +60,10 @@
 .getStartedButton {
   background-color: $tertiary-color;
   color: $secondary-color;
+  border-radius: 16px;
+  font-family: Sohne;
+  font-weight: 400;
+  line-height: 21.6px;
 
   &:hover {
     background-color: lighten($tertiary-color, 10%);
@@ -41,13 +71,12 @@
 }
 
 .getStartedButton:focus {
-  outline: 3px;
-  outline-offset: 2px;
+  border-radius: 16px;
 }
 
 .bottomContainer {
   position: absolute;
-  bottom: 20px; // Position the button closer to the bottom of the screen
+  bottom: 20px; 
   width: 100%;
   text-align: center;
   display: flex;

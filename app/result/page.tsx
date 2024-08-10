@@ -23,17 +23,18 @@ const ResultPage = () => {
 
     return (
         <div className={styles.container}>
-            <Title text="juicebox" className={styles.title} />
-            <BackButton 
-                className={styles.backButton}
-                ariaLabel="Go back to walkthrough"
-                onClick={navigateToForm}
-            />
+            <div className={styles.headerContainer}>
+                <BackButton 
+                    className={styles.backButton}
+                    ariaLabel="Go back to walkthrough"
+                    onClick={navigateToForm}
+                />
+                <Title text="juicebox" className={styles.title} />
+            </div>
             <div className={styles.lottieContainer}>
                 <LottieAnimation className={styles.lottie} />
             </div>
-            <h2 className={styles.text}>Thanks, {name}! Here’s your reality check summary:</h2>
-            <h2 className={styles.text}>Email: {email}</h2>
+            <h2 className={styles.text}>Thanks, {name}! Now it's time to get a reality check. \n This will take 2-3 minutes</h2>
         </div>
     );
 };

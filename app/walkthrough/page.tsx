@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
@@ -20,6 +20,7 @@ import { Swiper as SwiperType } from 'swiper';
 const Walkthrough = () => {
   const router = useRouter();
   const swiperRef = useRef<SwiperType | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0); // Track the active slide
 
   const navigateToForm = () => {
     router.push("/form");
@@ -78,76 +79,87 @@ const Walkthrough = () => {
   }, []);
 
   return (
-    <div>
-      <Title text="juicebox" className={styles.title} />
-      <BackButton
-        className={styles.backButton}
-        ariaLabel="Go back to home"
-        onClick={navigateToHome}
-      />
-      <Swiper
-        // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
-        slidesPerView={1}
-        pagination={{ clickable: true }}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }} // Store Swiper instance
-        onSlideChange={(swiper) => {
-          // Restart animation on slide change
-          animateText(slideRefs[swiper.activeIndex]);
-        }}
-      >
-        <SwiperSlide>
-          <div className={styles.slide}>
-            <LottieAnimation className={styles.lottie} />
-            <h3 ref={slideRefs[0]} className={styles.text}>
-              {
-                "Professionals around the world shared how they feel about technology and I’ve listened. Now it’s your turn."
-              }
-            </h3>
-            <Button
-              text="Continue"
-              onClick={() => swiperRef.current?.slideNext()}
-              className={styles.continueButton}
-              ariaLabel="Continue to next slide" // Add aria-label
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.slide} id="slide2">
-            <LottieAnimation className={styles.lottie} />
-            <h3 ref={slideRefs[1]} className={styles.text}>
-              {
-                "I’ll ask you a handful of meaningful questions and compare your responses with people in your industry."
-              }
-            </h3>
-            <Button
-              text="Continue"
-              onClick={() => swiperRef.current?.slideNext()}
-              className={styles.continueButton}
-              ariaLabel="Continue to next slide" // Add aria-label
-            />
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className={styles.slide} id="slide3">
-            <LottieAnimation className={styles.lottie} />
-            <h3 ref={slideRefs[2]} className={styles.text}>
-              {
-                "You’ll get insights into current industry sentiments and a reality check about technology in a few minutes. Deal? Great!"
-              }
-            </h3>
-            <Button
-              text="Get Started"
-              onClick={navigateToForm}
-              className={styles.getStartedButton}
-              ariaLabel="Get Started with the form" // Add aria-label
-            />
-          </div>
-        </SwiperSlide>
-      </Swiper>
+    <div className={styles.container}>
+      <div className={styles.headerContainer}>
+        <BackButton
+          className={styles.backButton}
+          ariaLabel="Go back to home"
+          onClick={navigateToHome}
+        />
+        <Title text="juicebox" className={styles.title} />
+      </div>
+      <div className={styles.contentContainer}>
+        <Swiper
+          modules={[Navigation, Pagination, Scrollbar, A11y]}
+          spaceBetween={50}
+          slidesPerView={1}
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }} // Store Swiper instance
+          onSlideChange={(swiper) => {
+            setActiveSlide(swiper.activeIndex); // Update active slide
+            animateText(slideRefs[swiper.activeIndex]);
+          }}
+        >
+          <SwiperSlide>
+            <div className={styles.slide}>
+              <LottieAnimation className={styles.lottie} />
+              <h3 ref={slideRefs[0]} className={styles.text}>
+                {
+                  "Professionals around the world shared how they feel about technology and I’ve listened. Now it’s your turn."
+                }
+              </h3>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className={styles.slide} id="slide2">
+              <LottieAnimation className={styles.lottie} />
+              <h3 ref={slideRefs[1]} className={styles.text}>
+                {
+                  "I’ll ask you a handful of meaningful questions and compare your responses with people in your industry."
+                }
+              </h3>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className={styles.slide} id="slide3">
+              <LottieAnimation className={styles.lottie} />
+              <h3 ref={slideRefs[2]} className={styles.text}>
+                {
+                  "You’ll get insights into current industry sentiments and a reality check about technology in a few minutes. Deal? Great!"
+                }
+              </h3>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+      <div className={styles.buttonContainer}>
+        {activeSlide === 0 && (
+          <Button
+            text="Continue"
+            onClick={() => swiperRef.current?.slideNext()}
+            className={styles.continueButton}
+            ariaLabel="Continue to next slide"
+          />
+        )}
+        {activeSlide === 1 && (
+          <Button
+            text="Continue"
+            onClick={() => swiperRef.current?.slideNext()}
+            className={styles.continueButton}
+            ariaLabel="Continue to next slide"
+          />
+        )}
+        {activeSlide === 2 && (
+          <Button
+            text="Get Started"
+            onClick={navigateToForm}
+            className={styles.getStartedButton}
+            ariaLabel="Get Started with the form"
+          />
+        )}
+      </div>
     </div>
   );
 };

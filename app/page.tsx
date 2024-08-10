@@ -43,7 +43,9 @@ const HomePage = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.headerContainer}>
       <Title text="juicebox" className={styles.title} />
+      </div>
       <LottieAnimation className={styles.lottie} />
       <div className={styles.textContainer}>
         <div className={`${styles.textOverlay} ${styles.line1}`}>
@@ -69,10 +71,10 @@ const HomePage = () => {
           industry opinions.
         </h2>
         <Button
-          text="Get Started"
+          text="Get a reality check"
           onClick={navigateToWalkthrough}
           className={styles.getStartedButton}
-          ariaLabel="Get Started button to begin walkthrough"
+          ariaLabel="Get a reality check button to begin walkthrough"
         />
       </div>
     </div>

@@ -79,12 +79,14 @@ const Form = () => {
 
   return (
     <div className={styles.container}>
-      <Title text="juicebox" className={styles.title} />
-      <BackButton
-        className={styles.backButton}
-        ariaLabel="Go back to walkthrough"
-        onClick={navigateToWalkthrough}
-      />
+      <div className={styles.headerContainer}>
+        <BackButton
+          className={styles.backButton}
+          ariaLabel="Go back to walkthrough"
+          onClick={navigateToWalkthrough}
+        />
+        <Title text="juicebox" className={styles.title} />
+      </div>
       <div className={styles.lottieContainer}>
         <LottieAnimation className={styles.lottie} />
       </div>

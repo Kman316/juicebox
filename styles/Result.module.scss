@@ -1,31 +1,12 @@
 @import "./variables";
 
-@font-face {
-  font-family: "Bagoss";
-  src: url("../public/figmafonts/Bagoss/BagossTRIALVF.ttf") format("ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
 .text {
   font-family: Bagoss;
   font-weight: 400;
-  line-height: 27.5px;
-  letter-spacing: 0.01em;
-  color: $primary-color;
+  line-height: 22.8px;
+  color: $started-color;
   text-align: center;
-}
-
-.backButton {
-  position: absolute;
-  top: 20px; // Adjust this value as needed
-  left: 20px; // Adjust this value to align with the juicebox text
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1; // Ensure it's above other content
-  top: 255px !important;
+  font-size: 19px;
 }
 
 .lottie {
@@ -35,14 +16,31 @@
 }
 
 .container {
-  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  padding: 20px;
+  height: 100vh;
+  justify-content: space-between;
 }
 
 .lottieContainer {
   margin-bottom: 20px;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+
+  .backButton {
+    position: absolute;
+    left: 20px;
+  }
+
+  .title {
+    flex-grow: 1;
+    text-align: center;
+  }
 }

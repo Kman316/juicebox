@@ -16,6 +16,25 @@ body {
   background: $tertiary-color !important; // Color of the active dot
 }
 
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+
+  .backButton {
+    position: absolute;
+    left: 20px;
+  }
+
+  .title {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
 // Media queries
 @media (min-width: 768px) {
   body {

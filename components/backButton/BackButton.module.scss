@@ -1,11 +1,7 @@
 .backButton {
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 102px;
   z-index: 1000;
+  padding: 8px;
 
   img {
     width: 46px;
