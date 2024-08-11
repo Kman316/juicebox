@@ -1,21 +1,36 @@
 $primary-color: #ffffff;
 $secondary-color: #0c0d10;
-$tertiary-color: #b488f2;
+$tertiary-color: #cdaaff;
 $gradient-end: #222737;
 $text-color: #808080;
-$border-color: #FFFFFF99;
-$started-color: #FAFAFA;
+$border-color: #ffffff99;
+$started-color: #fafafa;
+$caret-color: #65d5eb;
+$error-color: red;
+$gradient-first: #fabbff;
+$gradient-second: #b179ff;
+$gradient-third: #6dddff;
 
 @font-face {
-font-family: "Sohne";
-src: url("../public/figmafonts/Sohne\ \(Body\)/Sohne-Buch.otf") format("otf");
-font-weight: normal;
-font-style: normal;
+  font-family: "Sohne";
+  src: url("../public/assets/figmafonts/Sohne\ \(Body\)/Sohne-Buch.otf")
+    format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @font-face {
-font-family: "Bagoss";
-src: url("../public/figmafonts/Bagoss/BagossTRIALVF.ttf") format("ttf");
-font-weight: normal;
-font-style: normal;
+  font-family: "Bagoss";
+  src: url("../public/assets/figmafonts/Bagoss/BagossTRIALVF.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
 }
+
+@font-face {
+    font-family: "PPAgrandir";
+    src: url("../public/assets/figmafonts/PP\ Agrandir/PPAgrandir-Medium.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }

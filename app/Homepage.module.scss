@@ -1,11 +1,11 @@
-@import "./variables";
+@import "../styles/variables";
 
 .container {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: space-between; /* Space out title, Lottie, and bottom container */
-  overflow: hidden; /* Ensure nothing overflows the container */
+  justify-content: space-between;
+  overflow: hidden;
 }
 
 .headerContainer {
@@ -16,7 +16,7 @@
 }
 
 .title {
-  font-size: 2rem; /* Adjust the size as needed */
+  font-size: 2rem; 
   text-align: center;
 }
 
@@ -24,19 +24,19 @@
   display: flex;
   justify-content: center;
   position: relative;
-  flex-grow: 1; /* Allow the Lottie to take up available space */
+  flex-grow: 1; 
   align-items: center;
 }
 
 .lottie {
-  width: 274px;
-  height: 290px;
+  width: 500px;
+  height: 500ppx;
   z-index: 1;
-  transition: transform 1s ease; /* Ensure smooth transition */
+  transition: transform 1s ease;
 }
 
 .shrinking {
-  transform: scale(0.5); /* Adjust the scale value as needed */
+  transform: scale(0.5);
 }
 
 .textContainer {
@@ -73,7 +73,10 @@
 }
 
 .highlight {
-  color: $tertiary-color;
+  background: linear-gradient(45deg, $gradient-first, $gradient-second, $gradient-third);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .line1 {
@@ -142,6 +145,11 @@
   line-height: 33.6px;
   text-align: center;
   margin: 0 20px;
+}
+
+.fadeOut {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
 }
 
 @media (min-width: 768px) {

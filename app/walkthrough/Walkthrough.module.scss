@@ -1,10 +1,16 @@
-@import "./variables";
+@import "../../styles/variables";
 
 .container {
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: space-between;
+  transition: opacity 0.5s ease-in;
+}
+
+.fadeOut {
+  opacity: 0;
+  visibility: hidden;
 }
 
 .headerContainer {
@@ -27,8 +33,6 @@
 }
 
 .contentContainer {
-  flex-grow: 1;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -40,9 +44,10 @@
 }
 
 .lottie {
-  width: 146px; 
-  height: 155px; // Initial height
+  width: 274px;
+  height: 290px;
   z-index: 1;
+  transition: transform 1s ease;
 }
 
 .slide {
@@ -87,4 +92,6 @@
   font-family: Sohne;
   color: $secondary-color;
   border-radius: 16px;
+  border: solid 8px #FFFFFF1A;
+  box-sizing: border-box;
 }

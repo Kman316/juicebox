@@ -1,0 +1,84 @@
+@import "../../styles/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: flex-start;
+
+  @media (min-width: 768px) {
+    padding: 40px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: 60px;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+
+  .backButton {
+    position: absolute;
+    left: 20px;
+  }
+
+  .title {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+.lottieContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 60px;
+  }
+}
+
+.lottie {
+  width: 80px;
+  height: 80px;
+  z-index: 1;
+
+  @media (min-width: 768px) {
+    width: 100px;
+    height: 100px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.text {
+  font-family: Bagoss;
+  font-weight: 400;
+  line-height: 22.8px;
+  color: $started-color;
+  text-align: center;
+  font-size: 19px;
+  padding: 24px 20px;
+  margin-top: 20px;
+
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.8rem;
+  }
+}

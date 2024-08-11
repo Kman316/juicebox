@@ -1,8 +1,7 @@
 "use client";
-
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import styles from "../styles/Homepage.module.scss";
+import styles from "./Homepage.module.scss";
 import Lenis from "lenis";
 import { useRouter } from "next/navigation";
 import Title from "../components/title/Title";
@@ -11,6 +10,9 @@ import LottieAnimation from "../components/lottie/LottieAnimation";
 
 const HomePage = () => {
   const router = useRouter();
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const lottieRef = useRef<HTMLDivElement | null>(null);
+  const [isLeaving, setIsLeaving] = useState(false);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -38,15 +40,34 @@ const HomePage = () => {
   }, []);
 
   const navigateToWalkthrough = () => {
-    router.push("/walkthrough");
+    setIsLeaving(true);
+    if (buttonRef.current) {
+      gsap.to(buttonRef.current, {
+        duration: 0.5,
+        opacity: 0.1, // Transition to transparent
+        ease: "power2.inOut",
+      });
+    }
+    if (lottieRef.current) {
+      gsap.to(lottieRef.current, {
+        duration: 0.5,
+        scale: 0.5, // Resize the Lottie animation
+        ease: "power2.inOut",
+      });
+    }
+    setTimeout(() => {
+      router.push("/walkthrough");
+    }, 500);
   };
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isLeaving ? styles.fadeOut : ""}`}>
       <div className={styles.headerContainer}>
-      <Title text="juicebox" className={styles.title} />
+        <Title className={styles.title} />
       </div>
-      <LottieAnimation className={styles.lottie} />
+      <div className={styles.lottieContainer} ref={lottieRef}>
+        <LottieAnimation className={styles.lottie} />
+      </div>
       <div className={styles.textContainer}>
         <div className={`${styles.textOverlay} ${styles.line1}`}>
           WA businesses feel confident about future growth
@@ -75,6 +96,7 @@ const HomePage = () => {
           onClick={navigateToWalkthrough}
           className={styles.getStartedButton}
           ariaLabel="Get a reality check button to begin walkthrough"
+          ref={buttonRef} // Pass ref here
         />
       </div>
     </div>

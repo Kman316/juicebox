@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import LottieAnimation from "../../components/lottie/LottieAnimation";
-import styles from "../../styles/Form.module.scss";
+import styles from "./Form.module.scss";
 import Button from "../../components/button/Button";
 import { useRouter } from "next/navigation";
 import Title from "../../components/title/Title";
@@ -45,7 +45,6 @@ const Form = () => {
 
   const navigateToResults = () => {
     if (validateForm()) {
-      // Construct the URL with query parameters
       const queryString = new URLSearchParams({
         name: formData.firstName,
         email: formData.email,
@@ -81,84 +80,94 @@ const Form = () => {
           ariaLabel="Go back to walkthrough"
           onClick={navigateToWalkthrough}
         />
-        <Title text="juicebox" className={styles.title} />
+        <Title className={styles.title} />
       </div>
-      <div className={styles.lottieContainer}>
-        <LottieAnimation className={styles.lottie} />
+      <div className={styles.textContainer}>
+        <div className={styles.lottieContainer}>
+          <LottieAnimation className={styles.lottie} />
+        </div>
+        {step === 1 && (
+          <div className={styles.text}>
+            Let’s start with the basics. Type in your first name.
+          </div>
+        )}
+        {step === 2 && (
+          <h3 className={styles.text}>
+            How should we contact you? Type in your email address.
+          </h3>
+        )}
       </div>
       <form onSubmit={handleSubmit}>
-        {step === 1 && (
-          <div className={styles.formStep}>
-            <div className={styles.text}>
-              Let’s start with the basics. Type in your first name.
-            </div>
-            <div className={styles.inputContainer}>
-              <label htmlFor="firstName" className={styles.srOnly}>
-                First name
-              </label>
-              <input
-                id="firstName"
-                type="text"
-                name="firstName"
-                value={formData.firstName}
-                onChange={handleChange}
-                placeholder="First name"
-                className={styles.input}
-                aria-label="First name"
-                aria-required="true"
-                aria-invalid={!!errors.firstName}
-                aria-describedby="firstNameError" // Link to error message
-              />
-              {errors.firstName && (
-                <p id="firstNameError" className={styles.error}>
-                  {errors.firstName}
-                </p>
-              )}
-            </div>
+        <div className={styles.formStep}>
+          <div className={styles.inputContainer}>
+            {step === 1 && (
+              <>
+                <label htmlFor="firstName" className={styles.srOnly}>
+                  First name
+                </label>
+                <input
+                  id="firstName"
+                  type="text"
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  placeholder="First name"
+                  className={styles.input}
+                  aria-label="First name"
+                  aria-required="true"
+                  aria-invalid={!!errors.firstName}
+                  aria-describedby="firstNameError"
+                />
+                {errors.firstName && (
+                  <p id="firstNameError" className={styles.error}>
+                    {errors.firstName}
+                  </p>
+                )}
+              </>
+            )}
+            {step === 2 && (
+              <>
+                <label htmlFor="email" className={styles.srOnly}>
+                  Email address
+                </label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email address"
+                  className={styles.input}
+                  aria-label="Email address"
+                  aria-required="true"
+                  aria-invalid={!!errors.email}
+                  aria-describedby="emailError"
+                />
+                {errors.email && (
+                  <p id="emailError" className={styles.error}>
+                    {errors.email}
+                  </p>
+                )}
+              </>
+            )}
+          </div>
+          {step === 1 && (
             <Button
               text="Next"
               onClick={nextStep}
               className={styles.nextButton}
-              ariaLabel="Go to next step" // Add aria-label
+              ariaLabel="Go to next step"
             />
-          </div>
-        )}
-        {step === 2 && (
-          <div className={styles.formStep}>
-            <h3 className={styles.text}>
-              How should we contact you? Type in your email address.
-            </h3>
-            <div className={styles.inputContainer}>
-              <label htmlFor="email" className={styles.srOnly}>
-                Email address
-              </label>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Email address"
-                className={styles.input}
-                aria-label="Email address"
-                aria-required="true"
-                aria-invalid={!!errors.email}
-                aria-describedby="emailError" // Link to error message
-              />
-              {errors.email && (
-                <p id="emailError" className={styles.error}>
-                  {errors.email}
-                </p>
-              )}
-            </div>
+          )}
+          {step === 2 && (
             <Button
               text="Next"
               onClick={navigateToResults}
               className={styles.nextButton}
-              ariaLabel="Submit and go to results" // Add aria-label
+              ariaLabel="Submit and go to results"
             />
-          </div>
-        )}
+          )}
+        </div>
       </form>
     </div>
   );

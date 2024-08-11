@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import backButtonImage from "../../public/back.png";
+import backButtonImage from "../../public/assets/images/back.png";
 import styles from "./BackButton.module.scss";
 
 interface BackButtonProps {

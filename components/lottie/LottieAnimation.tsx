@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
-import juicebotAnimation from "../../public/animation/Juicebot.json";
+import juicebotAnimation from "../../public/assets/animation/Juicebot.json";
 
 interface LottieAnimationProps {
   autoplay?: boolean;

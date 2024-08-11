@@ -9,7 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { useRouter } from "next/navigation";
-import styles from "../../styles/Slides.module.scss";
+import styles from "./Walkthrough.module.scss";
 import { gsap } from "gsap";
 import Button from "../../components/button/Button";
 import Title from "../../components/title/Title";
@@ -20,14 +20,34 @@ import { Swiper as SwiperType } from 'swiper';
 const Walkthrough = () => {
   const router = useRouter();
   const swiperRef = useRef<SwiperType | null>(null);
-  const [activeSlide, setActiveSlide] = useState(0); // Track the active slide
+  const lottieRef = useRef<HTMLDivElement | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isLeaving, setIsLeaving] = useState(false);
 
   const navigateToForm = () => {
     router.push("/form");
   };
 
   const navigateToHome = () => {
-    router.push("/");
+    setIsLeaving(true);
+    if (swiperRef.current) {
+      gsap.to(swiperRef.current.el, {
+        duration: 0.5,
+        opacity: 0.1,
+        ease: "power2.inOut",
+      });
+    }
+
+    if (lottieRef.current) {
+      gsap.to(lottieRef.current, {
+        duration: 0.5,
+        scale: 0.5, // Resize the Lottie animation
+        ease: "power2.inOut",
+      });
+    }
+    setTimeout(() => {
+      router.push("/");
+    }, 500);
   };
 
   const slideRefs = [
@@ -40,7 +60,6 @@ const Walkthrough = () => {
     if (ref.current) {
       const text = ref.current.textContent || "";
 
-      // Preserve spaces and wrap each letter in a span
       ref.current.innerHTML = text
         .split(" ")
         .map((word) =>
@@ -59,17 +78,15 @@ const Walkthrough = () => {
       gsap.fromTo(
         letters,
         { color: "#808080" }, // Grey color
-        { color: "#ffffff", duration: 2, stagger: 0.05 }, // White color
+        { color: "#ffffff", duration: 2, stagger: 0.05 },
       );
     }
   };
 
   useEffect(() => {
-    // Initial animation on first slide
     animateText(slideRefs[0]);
 
     return () => {
-      // Cleanup: restore original text content
       slideRefs.forEach((ref) => {
         if (ref.current) {
           ref.current.innerHTML = ref.current.textContent || "";
@@ -78,17 +95,44 @@ const Walkthrough = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (swiperRef.current) {
+      gsap.fromTo(
+        swiperRef.current.el,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5 }
+      );
+    }
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container} ${isLeaving ? styles.fadeOut : ""}`}>
       <div className={styles.headerContainer}>
-        <BackButton
-          className={styles.backButton}
-          ariaLabel="Go back to home"
-          onClick={navigateToHome}
-        />
-        <Title text="juicebox" className={styles.title} />
+        {activeSlide === 0 && (
+          <BackButton
+            className={styles.backButton}
+            ariaLabel="Go back to home"
+            onClick={navigateToHome}
+          />
+        )}
+        {activeSlide === 1 && (
+          <BackButton
+            className={styles.backButton}
+            ariaLabel="Go back to first slide"
+            onClick={() => swiperRef.current?.slidePrev()}
+          />
+        )}
+        {activeSlide === 2 && (
+          <BackButton
+            className={styles.backButton}
+            ariaLabel="Go back to second slide"
+            onClick={() => swiperRef.current?.slidePrev()}
+          />
+        )}
+        <Title className={styles.title} />
       </div>
       <div className={styles.contentContainer}>
+        <LottieAnimation className={styles.lottie} />
         <Swiper
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           spaceBetween={50}
@@ -96,39 +140,35 @@ const Walkthrough = () => {
           pagination={{ clickable: true }}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
-          }} // Store Swiper instance
+            gsap.fromTo(
+              swiperRef.current.el,
+              { opacity: 0 },
+              { opacity: 1, duration: 0.5 }
+            );
+          }}
           onSlideChange={(swiper) => {
-            setActiveSlide(swiper.activeIndex); // Update active slide
+            setActiveSlide(swiper.activeIndex);
             animateText(slideRefs[swiper.activeIndex]);
           }}
         >
           <SwiperSlide>
             <div className={styles.slide}>
-              <LottieAnimation className={styles.lottie} />
               <h3 ref={slideRefs[0]} className={styles.text}>
-                {
-                  "Professionals around the world shared how they feel about technology and I’ve listened. Now it’s your turn."
-                }
+                {"Professionals around the world shared how they feel about technology and I’ve listened. Now it’s your turn."}
               </h3>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className={styles.slide} id="slide2">
-              <LottieAnimation className={styles.lottie} />
               <h3 ref={slideRefs[1]} className={styles.text}>
-                {
-                  "I’ll ask you a handful of meaningful questions and compare your responses with people in your industry."
-                }
+                {"I’ll ask you a handful of meaningful questions and compare your responses with people in your industry."}
               </h3>
             </div>
           </SwiperSlide>
           <SwiperSlide>
             <div className={styles.slide} id="slide3">
-              <LottieAnimation className={styles.lottie} />
               <h3 ref={slideRefs[2]} className={styles.text}>
-                {
-                  "You’ll get insights into current industry sentiments and a reality check about technology in a few minutes. Deal? Great!"
-                }
+                {"You’ll get insights into current industry sentiments and a reality check about technology in a few minutes. Deal? Great!"}
               </h3>
             </div>
           </SwiperSlide>

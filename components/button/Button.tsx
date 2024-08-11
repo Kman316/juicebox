@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, Ref } from "react";
 import styles from "./Button.module.scss";
 
 interface ButtonProps {
@@ -9,23 +9,24 @@ interface ButtonProps {
   ariaLabel?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(({
   text,
   type = "button",
   onClick,
   className,
   ariaLabel,
-}) => {
+}, ref: Ref<HTMLButtonElement>) => {
   return (
     <button
       type={type}
       onClick={onClick}
       className={`${styles.button} ${className}`}
       aria-label={ariaLabel}
+      ref={ref} // Attach ref here
     >
       {text}
     </button>
   );
-};
+});
 
 export default Button;
